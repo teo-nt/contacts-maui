@@ -26,10 +26,10 @@ public partial class EditContactPage : ContentPage
 			_contact = ContactRepository.GetContactById(int.Parse(value));
 			if (_contact != null)
 			{
-                entryName.Text = _contact.Name;
-                entryEmail.Text = _contact.Email;
-				entryPhone.Text = _contact.Phone;
-				entryAddress.Text = _contact.Address;
+                contactCtrl.Name = _contact.Name;
+                contactCtrl.Email = _contact.Email;
+				contactCtrl.Phone = _contact.Phone;
+				contactCtrl.Address = _contact.Address;
             }
 			
 		}
@@ -37,12 +37,18 @@ public partial class EditContactPage : ContentPage
 
     private void btnUpdate_Clicked(object sender, EventArgs e)
     {
-		_contact!.Name = entryName.Text;
-		_contact.Email = entryEmail.Text;
-		_contact.Phone = entryPhone.Text;
-		_contact.Address = entryAddress.Text;
+
+		_contact!.Name = contactCtrl.Name;
+		_contact.Email = contactCtrl.Email;
+		_contact.Phone = contactCtrl.Phone;
+		_contact.Address = contactCtrl.Address;
 
 		ContactRepository.UpdateContact(_contact.ContactId, _contact);
         Shell.Current.GoToAsync("..");
+    }
+
+    private void contactCtrl_OnError(object sender, string e)
+    {
+		DisplayAlert("Error", e, "OK");
     }
 }

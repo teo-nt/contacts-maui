@@ -47,5 +47,52 @@ namespace Contacts.Maui.Models
                 contactToUpdate.Name = contact.Name;
             }     
         }
+
+        public static void AddContact(Contact contact)
+        {
+            var maxId = _contacts.Max(c => c.ContactId);
+            contact.ContactId = maxId + 1;
+            _contacts.Add(contact);
+        }
+
+        public static void DeleteContact(int contactId)
+        {
+            var contact = _contacts.FirstOrDefault(c => c.ContactId == contactId);
+            if (contact is not null) _contacts.Remove(contact);
+        }
+
+        public static List<Contact> SearchContacts(string filterText)
+        {
+            var contacts = _contacts.Where(c => c.Name.StartsWith(filterText, StringComparison.OrdinalIgnoreCase)).ToList();
+
+            if (contacts is null || contacts.Count == 0)
+            {
+                contacts = _contacts.Where(c => c.Email.StartsWith(filterText, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+            else
+            {
+                return contacts;
+            }
+
+            if (contacts is null || contacts.Count == 0)
+            {
+                contacts = _contacts.Where(c => c.Phone.StartsWith(filterText, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+            else
+            {
+                return contacts;
+            }
+
+            if (contacts is null || contacts.Count == 0)
+            {
+                contacts = _contacts.Where(c => c.Address.StartsWith(filterText, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+            else
+            {
+                return contacts;
+            }
+
+            return contacts;
+        }
     }
 }
