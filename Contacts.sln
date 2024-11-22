@@ -1,9 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35506.116 d17.12
+VisualStudioVersion = 17.12.35506.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contacts.Maui", "Contacts.Maui\Contacts.Maui.csproj", "{5B6B0A58-228B-4216-BB04-5800901B582D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contacts.Maui", "Contacts.Maui\Contacts.Maui.csproj", "{5B6B0A58-228B-4216-BB04-5800901B582D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contacts.CoreBusiness", "Contacts.CoreBusiness\Contacts.CoreBusiness.csproj", "{65104C3B-4438-40C9-9420-897F03F6C315}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contacts.UseCases", "Contacts.UseCases\Contacts.UseCases.csproj", "{93FFF8F3-DCBB-43A6-B684-2047CAF4258E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{1D8E6B69-43A1-4A90-ADAB-2DFB5AD73F0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contacts.Plugins.DataStore.InMemory", "Plugins\Contacts.Plugins.DataStore.InMemory\Contacts.Plugins.DataStore.InMemory.csproj", "{57C7561C-9516-47F6-9709-0397E3AAB3C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,8 +25,26 @@ Global
 		{5B6B0A58-228B-4216-BB04-5800901B582D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B6B0A58-228B-4216-BB04-5800901B582D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5B6B0A58-228B-4216-BB04-5800901B582D}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{65104C3B-4438-40C9-9420-897F03F6C315}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65104C3B-4438-40C9-9420-897F03F6C315}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65104C3B-4438-40C9-9420-897F03F6C315}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65104C3B-4438-40C9-9420-897F03F6C315}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93FFF8F3-DCBB-43A6-B684-2047CAF4258E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93FFF8F3-DCBB-43A6-B684-2047CAF4258E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93FFF8F3-DCBB-43A6-B684-2047CAF4258E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93FFF8F3-DCBB-43A6-B684-2047CAF4258E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57C7561C-9516-47F6-9709-0397E3AAB3C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57C7561C-9516-47F6-9709-0397E3AAB3C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57C7561C-9516-47F6-9709-0397E3AAB3C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57C7561C-9516-47F6-9709-0397E3AAB3C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{57C7561C-9516-47F6-9709-0397E3AAB3C0} = {1D8E6B69-43A1-4A90-ADAB-2DFB5AD73F0D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {37B7F1D4-D05F-40F0-AC75-918E3F62FDFD}
 	EndGlobalSection
 EndGlobal

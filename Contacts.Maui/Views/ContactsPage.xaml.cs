@@ -1,23 +1,19 @@
 using Contacts.Maui.Models;
+using Contacts.UseCases.Interfaces;
 using System.Collections.ObjectModel;
-using Contact = Contacts.Maui.Models.Contact;
+using Contact = Contacts.CoreBusiness.Contact;
 
 namespace Contacts.Maui.Views;
 
 public partial class ContactsPage : ContentPage
 {
-	public ContactsPage()
+    private readonly IViewContactsUseCase viewContactsUseCase;
+
+    public ContactsPage(IViewContactsUseCase viewContactsUseCase)
 	{
 		InitializeComponent();
-		
-		/*{
-			"John Dpe",
-			"Jane Doe",
-			"Tom Hanks",
-			"Frank Liu"
-		};*/
-		
-	}
+        this.viewContactsUseCase = viewContactsUseCase;
+    }
 
     protected override void OnAppearing()
     {
@@ -58,15 +54,15 @@ public partial class ContactsPage : ContentPage
 		LoadContacts();
     }
 
-	private void LoadContacts()
+	private async void LoadContacts()
 	{
-        var contacts = new ObservableCollection<Contact>(ContactRepository.GetContacts());
+        var contacts = new ObservableCollection<Contact>(await viewContactsUseCase.ExecuteASync(string.Empty));
         listContacts.ItemsSource = contacts;
     }
 
-    private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+    private async void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
     {
-		var contacts = new ObservableCollection<Contact>(ContactRepository.SearchContacts(((SearchBar)sender).Text));
+        var contacts = new ObservableCollection<Contact>(await viewContactsUseCase.ExecuteASync(searchBar.Text));
         listContacts.ItemsSource = contacts;
     }
 
