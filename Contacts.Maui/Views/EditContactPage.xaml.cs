@@ -41,7 +41,7 @@ public partial class EditContactPage : ContentPage
 		}
 	}
 
-    private void btnUpdate_Clicked(object sender, EventArgs e)
+    private async void btnUpdate_Clicked(object sender, EventArgs e)
     {
 
 		_contact!.Name = contactCtrl.Name;
@@ -50,8 +50,8 @@ public partial class EditContactPage : ContentPage
 		_contact.Address = contactCtrl.Address;
 
 		//ContactRepository.UpdateContact(_contact.ContactId, _contact);
-		//editContactUseCase
-        Shell.Current.GoToAsync("..");
+		await editContactUseCase.ExecuteAsync(_contact.ContactId, _contact);
+        await Shell.Current.GoToAsync("..");
     }
 
     private void contactCtrl_OnError(object sender, string e)
