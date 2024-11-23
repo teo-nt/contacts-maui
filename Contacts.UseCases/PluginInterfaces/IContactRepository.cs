@@ -8,5 +8,6 @@ namespace Contacts.UseCases.PluginInterfaces
     {
         Task<List<Contact>> GetContactsAsync(string filterText);
         Task<Contact>? GetContactByIdAsync(int contactId);
+        Task UpdateContactAsync(int contactId, Contact contact);
     }
 }

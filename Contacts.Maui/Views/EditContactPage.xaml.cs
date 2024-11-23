@@ -10,11 +10,13 @@ public partial class EditContactPage : ContentPage
 {
 	private Contact? _contact;
     private readonly IViewContactUseCase viewContactUseCase;
+    private readonly IEditContactUseCase editContactUseCase;
 
-    public EditContactPage(IViewContactUseCase viewContactUseCase)
+    public EditContactPage(IViewContactUseCase viewContactUseCase, IEditContactUseCase editContactUseCase)
 	{
 		InitializeComponent();
         this.viewContactUseCase = viewContactUseCase;
+        this.editContactUseCase = editContactUseCase;
     }
 
     private void btnCancel_Clicked(object sender, EventArgs e)
@@ -48,6 +50,7 @@ public partial class EditContactPage : ContentPage
 		_contact.Address = contactCtrl.Address;
 
 		//ContactRepository.UpdateContact(_contact.ContactId, _contact);
+		//editContactUseCase
         Shell.Current.GoToAsync("..");
     }
 
