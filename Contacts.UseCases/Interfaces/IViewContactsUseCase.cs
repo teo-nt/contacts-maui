@@ -4,6 +4,6 @@ namespace Contacts.UseCases.Interfaces
 {
     public interface IViewContactsUseCase
     {
-        Task<List<Contact>> ExecuteASync(string filterText);
+        Task<List<Contact>> ExecuteAsync(string filterText);
     }
 }

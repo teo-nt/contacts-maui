@@ -58,13 +58,13 @@ public partial class ContactsPage : ContentPage
 
 	private async void LoadContacts()
 	{
-        var contacts = new ObservableCollection<Contact>(await viewContactsUseCase.ExecuteASync(string.Empty));
+        var contacts = new ObservableCollection<Contact>(await viewContactsUseCase.ExecuteAsync(string.Empty));
         listContacts.ItemsSource = contacts;
     }
 
     private async void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
     {
-        var contacts = new ObservableCollection<Contact>(await viewContactsUseCase.ExecuteASync(searchBar.Text));
+        var contacts = new ObservableCollection<Contact>(await viewContactsUseCase.ExecuteAsync(searchBar.Text));
         listContacts.ItemsSource = contacts;
     }
 
