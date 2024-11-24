@@ -98,5 +98,13 @@ namespace Contacts.Plugins.DataStore.InMemory
 
             return Task.CompletedTask;
         }
+
+        public Task DeleteContactAsync(int id)
+        {
+            var contact = _contacts.FirstOrDefault(c => c.ContactId == id);
+            if (contact is not null) _contacts.Remove(contact);
+
+            return Task.CompletedTask;
+        }
     }
 }
