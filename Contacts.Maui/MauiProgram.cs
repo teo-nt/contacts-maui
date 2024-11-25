@@ -35,6 +35,7 @@ namespace Contacts.Maui
             builder.Services.AddTransient<IDeleteContactUseCase, DeleteContactUseCase>();
 
             builder.Services.AddSingleton<ContactsViewModel>();
+            builder.Services.AddSingleton<ContactViewModel>();
             
 
             builder.Services.AddSingleton<ContactsPage>();
@@ -42,6 +43,7 @@ namespace Contacts.Maui
             builder.Services.AddSingleton<AddContactPage>();
 
             builder.Services.AddSingleton<ContactsMVVMPage>();
+            builder.Services.AddSingleton<EditContactPageMVVM>();
             return builder.Build();
         }
     }
