@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Maui;
+using Contacts.Maui.ViewModels;
 using Contacts.Maui.Views;
+using Contacts.Maui.Views_Mvvm;
 using Contacts.Plugins.DataStore.InMemory;
 using Contacts.UseCases;
 using Contacts.UseCases.Interfaces;
@@ -31,11 +33,15 @@ namespace Contacts.Maui
             builder.Services.AddTransient<IEditContactUseCase, EditContactUseCase>();
             builder.Services.AddTransient<IAddContactUseCase, AddContactUseCase>();
             builder.Services.AddTransient<IDeleteContactUseCase, DeleteContactUseCase>();
+
+            builder.Services.AddSingleton<ContactsViewModel>();
             
 
             builder.Services.AddSingleton<ContactsPage>();
             builder.Services.AddSingleton<EditContactPage>();
             builder.Services.AddSingleton<AddContactPage>();
+
+            builder.Services.AddSingleton<ContactsMVVMPage>();
             return builder.Build();
         }
     }

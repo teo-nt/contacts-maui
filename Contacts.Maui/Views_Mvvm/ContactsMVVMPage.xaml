@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Contacts.Maui.Views_Mvvm.ContactsMVVMPage"
+             xmlns:vm="clr-namespace:Contacts.Maui.ViewModels"
+             xmlns:m="clr-namespace:Contacts.CoreBusiness;assembly=Contacts.CoreBusiness"
+             x:DataType="vm:ContactsViewModel"
+             Title="ContactsMVVMPage">
+    <Grid 
+        Padding="5"
+        RowDefinitions="50, *, 50">
+        <SearchBar 
+            x:Name="searchBar"
+            Placeholder="Search Contact"
+        />
+
+        <CollectionView
+            x:Name="ContactsCollection"
+            ItemsSource="{Binding Contacts}"
+            Grid.Row="1">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="m:Contact">
+                    <VerticalStackLayout>
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItems>
+                                    <SwipeItem Text="Delete"
+                                               IsDestructive="True"
+                                               BackgroundColor="Red"
+                                               Command="{Binding Source={x:Reference ContactsCollection}, Path=BindingContext.DeleteContactCommand}"
+                                               CommandParameter="{Binding ContactId}">
+                                    </SwipeItem>
+                                    <SwipeItem Text="Edit"
+                                               BackgroundColor="Green">
+                                    </SwipeItem>
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+                            <Frame Margin="0, 5, 0, 5">
+                                <VerticalStackLayout Spacing="5">
+                                    <Label Text="{Binding Name}" />
+                                    <Label Text="{Binding Email}" />
+                                </VerticalStackLayout>
+                            </Frame>
+                        </SwipeView>
+                        
+                        
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
+        <Button 
+            Grid.Row="2"
+            Text="Add Contact" 
+        />
+    </Grid>
+</ContentPage>
