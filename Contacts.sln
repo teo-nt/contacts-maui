@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{1D8E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contacts.Plugins.DataStore.InMemory", "Plugins\Contacts.Plugins.DataStore.InMemory\Contacts.Plugins.DataStore.InMemory.csproj", "{57C7561C-9516-47F6-9709-0397E3AAB3C0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contacts.Plugins.DataStore.SQLLite", "Plugins\Contacts.Plugins.DataStore.SQLLite\Contacts.Plugins.DataStore.SQLLite.csproj", "{6EA3F3A1-12F9-4D24-8E4C-23C4D8275C7D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,12 +39,17 @@ Global
 		{57C7561C-9516-47F6-9709-0397E3AAB3C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57C7561C-9516-47F6-9709-0397E3AAB3C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57C7561C-9516-47F6-9709-0397E3AAB3C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EA3F3A1-12F9-4D24-8E4C-23C4D8275C7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EA3F3A1-12F9-4D24-8E4C-23C4D8275C7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EA3F3A1-12F9-4D24-8E4C-23C4D8275C7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EA3F3A1-12F9-4D24-8E4C-23C4D8275C7D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{57C7561C-9516-47F6-9709-0397E3AAB3C0} = {1D8E6B69-43A1-4A90-ADAB-2DFB5AD73F0D}
+		{6EA3F3A1-12F9-4D24-8E4C-23C4D8275C7D} = {1D8E6B69-43A1-4A90-ADAB-2DFB5AD73F0D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {37B7F1D4-D05F-40F0-AC75-918E3F62FDFD}

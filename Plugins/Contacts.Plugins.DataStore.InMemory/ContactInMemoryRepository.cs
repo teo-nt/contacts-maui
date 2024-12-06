@@ -58,12 +58,12 @@ namespace Contacts.Plugins.DataStore.InMemory
             return Task.FromResult(contacts);
         }
 
-        public Task<Contact>? GetContactByIdAsync(int contactId)
+        public Task<Contact?> GetContactByIdAsync(int contactId)
         {
             var contact = _contacts.FirstOrDefault(c => c.ContactId == contactId);
             if (contact != null)
             {
-                return Task.FromResult(new Contact
+                return Task.FromResult<Contact?>(new Contact
                 {
                     ContactId = contact.ContactId,
                     Name = contact.Name,
@@ -72,7 +72,7 @@ namespace Contacts.Plugins.DataStore.InMemory
                     Address = contact.Address,
                 });
             }
-            return null;
+            return Task.FromResult<Contact?>(null);
         }
 
         public Task UpdateContactAsync(int contactId, Contact contact)
