@@ -10,15 +10,28 @@ namespace Contacts.Maui.ViewModels
     {
         private readonly IViewContactUseCase viewContactUseCase;
         private readonly IEditContactUseCase editContactUseCase;
+        private readonly IAddContactUseCase addContactUseCase;
 
         [ObservableProperty]
         private Contact _contact = new Contact();
 
-        public ContactViewModel(IViewContactUseCase viewContactUseCase, IEditContactUseCase editContactUseCase)
+        public ContactViewModel(IViewContactUseCase viewContactUseCase, 
+            IEditContactUseCase editContactUseCase,
+            IAddContactUseCase addContactUseCase)
         {
             this.viewContactUseCase = viewContactUseCase;
             this.editContactUseCase = editContactUseCase;
+            this.addContactUseCase = addContactUseCase;
         }
+
+        [ObservableProperty]
+        public bool _isNameProvided;
+
+        [ObservableProperty]
+        public bool _isEmailProvided;
+
+        [ObservableProperty]
+        public bool _isEmailFormatValid;
 
         public async Task LoadContact(int contactId)
         {
@@ -28,14 +41,47 @@ namespace Contacts.Maui.ViewModels
         [RelayCommand]
         public async Task EditContact()
         {
-            await editContactUseCase.ExecuteAsync(Contact.ContactId, Contact);
-            await Shell.Current.GoToAsync($"//{nameof(ContactsMVVMPage)}");
+            if (await ValidateContact())
+            {
+                await editContactUseCase.ExecuteAsync(Contact.ContactId, Contact);
+                await Shell.Current.GoToAsync($"//{nameof(ContactsMVVMPage)}");
+            }      
+        }
+
+        [RelayCommand]
+        public async Task AddContact()
+        {
+            if (await ValidateContact())
+            {
+                await addContactUseCase.ExecuteAsync(Contact);
+                await Shell.Current.GoToAsync($"//{nameof(ContactsMVVMPage)}");
+            }          
         }
 
         [RelayCommand]
         public async Task BackToContacts()
         {
             await Shell.Current.GoToAsync($"//{nameof(ContactsMVVMPage)}");
+        }
+
+        private async Task<bool> ValidateContact()
+        {
+            if (!IsNameProvided)
+            {
+                await Application.Current!.MainPage!.DisplayAlert("Error", "Name is required", "OK");
+                return false;
+            }
+            if (!IsEmailProvided)
+            {
+                await Application.Current!.MainPage!.DisplayAlert("Error", "Email is required", "OK");
+                return false;
+            }
+            if (!IsEmailFormatValid)
+            {
+                await Application.Current!.MainPage!.DisplayAlert("Error", "Email is not valid", "OK");
+                return false;
+            }
+            return true;
         }
     }
 }

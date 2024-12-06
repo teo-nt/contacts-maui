@@ -43,6 +43,7 @@ namespace Contacts.Maui
             builder.Services.AddSingleton<AddContactPage>();
 
             builder.Services.AddSingleton<ContactsMVVMPage>();
+            builder.Services.AddSingleton<AddContactPageMVVM>();
             builder.Services.AddSingleton<EditContactPageMVVM>();
             return builder.Build();
         }
