@@ -10,7 +10,7 @@
         Padding="5"
         RowDefinitions="50, *, 50">
         <SearchBar 
-            x:Name="searchBar"
+            Text="{Binding FilterText}"
             Placeholder="Search Contact"
         />
 
