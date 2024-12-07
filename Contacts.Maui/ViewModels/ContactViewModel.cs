@@ -25,13 +25,13 @@ namespace Contacts.Maui.ViewModels
         }
 
         [ObservableProperty]
-        public bool _isNameProvided;
+        private bool _isNameProvided;
 
         [ObservableProperty]
-        public bool _isEmailProvided;
+        private bool _isEmailProvided;
 
         [ObservableProperty]
-        public bool _isEmailFormatValid;
+        private bool _isEmailFormatValid; 
 
         public async Task LoadContact(int contactId)
         {
@@ -71,11 +71,11 @@ namespace Contacts.Maui.ViewModels
                 await Application.Current!.MainPage!.DisplayAlert("Error", "Name is required", "OK");
                 return false;
             }
-            if (!IsEmailProvided)
-            {
-                await Application.Current!.MainPage!.DisplayAlert("Error", "Email is required", "OK");
-                return false;
-            }
+            //if (!IsEmailProvided)
+            //{
+            //    await Application.Current!.MainPage!.DisplayAlert("Error", "Email is required", "OK");
+            //    return false;
+            //}
             if (!IsEmailFormatValid)
             {
                 await Application.Current!.MainPage!.DisplayAlert("Error", "Email is not valid", "OK");

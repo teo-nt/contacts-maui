@@ -28,18 +28,18 @@
                 <Label Text="Email" VerticalOptions="Center" WidthRequest="60"/>
                 <Entry VerticalOptions="Center" Text="{Binding Contact.Email}">
                     <Entry.Behaviors>
-                        <toolkit:MultiValidationBehavior x:Name="emailValidator" Flags="ValidateOnAttaching,ValidateOnValueChanged">
+                        <!--<toolkit:MultiValidationBehavior x:Name="emailValidator" Flags="ValidateOnAttaching,ValidateOnValueChanged">
                             <toolkit:TextValidationBehavior 
-                                Flags="ValidateOnAttaching,ValidateOnValueChanged"
-                                MinimumLength="1"
-                                toolkit:MultiValidationBehavior.Error="Email is required."
-                                 IsValid="{Binding IsEmailProvided}"
-                        />
-                            <toolkit:EmailValidationBehavior 
-                                Flags="ValidateOnAttaching,ValidateOnValueChanged"
-                                toolkit:MultiValidationBehavior.Error="Email is not valid."
-                                 IsValid="{Binding IsEmailFormatValid}"/>   
-                        </toolkit:MultiValidationBehavior>
+                                    Flags="ValidateOnAttaching,ValidateOnValueChanged"
+                                    MinimumLength="1"
+                                    toolkit:MultiValidationBehavior.Error="Email is required."
+                                    IsValid="{Binding IsEmailProvided}"
+                                />-->
+                                <toolkit:EmailValidationBehavior
+                                    Flags="ValidateOnAttaching,ValidateOnValueChanged"
+                                    toolkit:MultiValidationBehavior.Error="Email is not valid."
+                                    IsValid="{Binding IsEmailFormatValid}"/>                            
+                        <!--</toolkit:MultiValidationBehavior>-->
                     </Entry.Behaviors>
                 </Entry>
             </HorizontalStackLayout>
