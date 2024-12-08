@@ -43,6 +43,12 @@ namespace Contacts.WebAPI
                 await db.SaveChangesAsync();
             });
 
+            app.MapGet("/api/contacts/{id}", async (int id, ApplicationDbContext db) =>
+            {
+                var contact =await  db.Contacts.FirstOrDefaultAsync(c => c.ContactId == id);
+                return Results.Ok(contact);
+            });
+
             app.MapPut("/api/contacts/{id}", async (int id, Contact contact, ApplicationDbContext db) =>
             {
                 var contactToUpdate = await db.Contacts.FindAsync(id);
