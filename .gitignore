@@ -482,3 +482,5 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+/Contacts.WebAPI/Contacts.db-shm
+/Contacts.WebAPI/Contacts.db-wal
