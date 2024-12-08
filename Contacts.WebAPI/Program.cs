@@ -19,10 +19,21 @@ namespace Contacts.WebAPI
             // Configure the HTTP request pipeline.
 
             //app.UseHttpsRedirection();
-            app.MapGet("/api/contacts", async (ApplicationDbContext db) =>
+            app.MapGet("/api/contacts", async (string? s, ApplicationDbContext db) =>
             {
-                var contacts = await db.Contacts.ToListAsync();
-
+                List<Contact> contacts;
+                if (string.IsNullOrEmpty(s)) 
+                {
+                    contacts = await db.Contacts.ToListAsync();
+                }
+                else
+                {
+                    contacts = await db.Contacts.Where(c => 
+                        !string.IsNullOrWhiteSpace(c.Name) && c.Name.ToLower().IndexOf(s.ToLower()) >= 0 ||
+                        !string.IsNullOrWhiteSpace(c.Email) && c.Email.ToLower().IndexOf(s.ToLower()) >= 0 ||
+                        !string.IsNullOrWhiteSpace(c.Phone) && c.Phone.ToLower().IndexOf(s.ToLower()) >= 0 ||
+                        !string.IsNullOrWhiteSpace(c.Address) && c.Address.ToLower().IndexOf(s.ToLower()) >= 0).ToListAsync();
+                }
                 return Results.Ok(contacts);
             });
 
